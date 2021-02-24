@@ -6,7 +6,7 @@ import { unpkgPathPlugin } from '../plugins/unpkg-path-plugin';
 import { fetchPlugin } from '../plugins/fetch-plugin';
 
 /** Components */
-import CodeEditor from '../components/code-editor';
+import CodeEditor from '../components/code-editor/code-editor.component';
 
 const App: React.FC = () => {
   const ref = useRef<any>();
