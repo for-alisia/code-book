@@ -5,6 +5,9 @@ import { useState, useRef, useEffect } from 'react';
 import { unpkgPathPlugin } from '../plugins/unpkg-path-plugin';
 import { fetchPlugin } from '../plugins/fetch-plugin';
 
+/** Components */
+import CodeEditor from '../components/code-editor';
+
 const App: React.FC = () => {
   const ref = useRef<any>();
   const iframe = useRef<any>();
@@ -64,6 +67,7 @@ const App: React.FC = () => {
 
   return (
     <div>
+      <CodeEditor initialValue="const a = 1;" onChange={(value) => setInput(value)} />
       <textarea
         value={input}
         rows={10}
