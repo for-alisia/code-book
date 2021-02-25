@@ -1,5 +1,5 @@
 /** Dependencies */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 /** ESBuild */
 import bundle from '../../bundler';
@@ -14,11 +14,17 @@ const CodeCell: React.FC = () => {
   const [rawCode, setRawCode] = useState('');
   /** Bundled code */
   const [code, setCode] = useState('');
+  const [error, setError] = useState('');
 
-  const onClick = async () => {
-    const output = await bundle(rawCode);
-    setCode(output);
-  };
+  useEffect(() => {
+    const timer = setTimeout(async () => {
+      const bundledCode = await bundle(rawCode);
+      setCode(bundledCode.code);
+      setError(bundledCode.err);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [rawCode]);
 
   return (
     <Resizable direction="vertical">
@@ -26,7 +32,7 @@ const CodeCell: React.FC = () => {
         <Resizable direction="horizontal">
           <CodeEditor initialValue="const a = 1;" onChange={(value) => setRawCode(value)} />
         </Resizable>
-        <Preview code={code} />
+        <Preview code={code} bundleStatus={error} />
       </div>
     </Resizable>
   );
