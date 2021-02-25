@@ -7,6 +7,7 @@ import bundle from '../../bundler';
 /** Components */
 import CodeEditor from '../code-editor/code-editor.component';
 import Preview from '../preview/preview.component';
+import Resizable from '../resizable/resizable.component';
 
 const CodeCell: React.FC = () => {
   /** Code from monaco editor  */
@@ -20,14 +21,14 @@ const CodeCell: React.FC = () => {
   };
 
   return (
-    <div>
-      <CodeEditor initialValue="const a = 1;" onChange={(value) => setRawCode(value)} />
-      <div>
-        <button onClick={onClick}>Submit</button>
+    <Resizable direction="vertical">
+      <div style={{ height: '100%', display: 'flex', flexDirection: 'row' }}>
+        <Resizable direction="horizontal">
+          <CodeEditor initialValue="const a = 1;" onChange={(value) => setRawCode(value)} />
+        </Resizable>
+        <Preview code={code} />
       </div>
-
-      <Preview code={code} />
-    </div>
+    </Resizable>
   );
 };
 
