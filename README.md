@@ -6,3 +6,4 @@
 - Uses [Prettier](https://www.npmjs.com/package/prettier) to format the user's code
 - Uses [Markdown Editor](https://www.npmjs.com/package/@uiw/react-md-editor) to handle text snippets
 - Uses [bulmaswatch/superhero theme](https://jenil.github.io/bulmaswatch/superhero/) for styling
+- State Managament: Redux, Immer, Thunk
