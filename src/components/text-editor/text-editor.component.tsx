@@ -13,7 +13,7 @@ interface TextEditorProps {
   cell: Cell;
 }
 
-const TextEditor: React.FC<TextEditorProps> = ({ cell }) => {
+const TextEditor: React.FC<TextEditorProps> = ({ cell: { id, content } }) => {
   /** Mode of dispalying */
   const [editing, setEditing] = useState(false);
   /** Action to update the cell */
@@ -37,12 +37,12 @@ const TextEditor: React.FC<TextEditorProps> = ({ cell }) => {
     <div>
       {editing ? (
         <div ref={editorRef} className="text-editor">
-          <MDEditor value={cell.content} onChange={(v) => updateCell(cell.id, v || '')} />
+          <MDEditor value={content} onChange={(v) => updateCell(id, v || '')} />
         </div>
       ) : (
         <div onClick={() => setEditing(true)} className="text-editor card">
           <div className="card-content">
-            <MDEditor.Markdown source={cell.content} />
+            <MDEditor.Markdown source={content || 'Click to edit'} />
           </div>
         </div>
       )}

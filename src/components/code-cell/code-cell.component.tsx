@@ -19,7 +19,7 @@ interface CodeCellProps {
   cell: Cell;
 }
 
-const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
+const CodeCell: React.FC<CodeCellProps> = ({ cell: { content, id } }) => {
   /** Bundled code */
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
@@ -28,22 +28,19 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
 
   useEffect(() => {
     const timer = setTimeout(async () => {
-      const bundledCode = await bundle(cell.content);
+      const bundledCode = await bundle(content);
       setCode(bundledCode.code);
       setError(bundledCode.err);
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [cell.content]);
+  }, [content]);
 
   return (
     <Resizable direction="vertical">
       <div style={{ height: '100%', display: 'flex', flexDirection: 'row' }}>
         <Resizable direction="horizontal">
-          <CodeEditor
-            initialValue={cell.content}
-            onChange={(value) => updateCell(cell.id, value)}
-          />
+          <CodeEditor initialValue={content} onChange={(value) => updateCell(id, value)} />
         </Resizable>
         <Preview code={code} bundleStatus={error} />
       </div>
