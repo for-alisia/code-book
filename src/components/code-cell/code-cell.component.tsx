@@ -1,8 +1,5 @@
 /** Dependencies */
-import { useState, useEffect } from 'react';
-
-/** ESBuild */
-import bundle from '../../bundler';
+import { useEffect } from 'react';
 
 /** Components */
 import CodeEditor from '../code-editor/code-editor.component';
@@ -14,27 +11,31 @@ import { Cell } from '../../state';
 
 /** Redux */
 import { useActions } from '../../hooks/use-actions.hook';
+import { useTypedSelector } from '../../hooks/use-typed-selector.hook';
+
+/** Styles */
+import './code-cell.styles.css';
 
 interface CodeCellProps {
   cell: Cell;
 }
 
 const CodeCell: React.FC<CodeCellProps> = ({ cell: { content, id } }) => {
-  /** Bundled code */
-  const [code, setCode] = useState('');
-  const [error, setError] = useState('');
-
-  const { updateCell } = useActions();
+  const { updateCell, createBundle } = useActions();
+  const bundle = useTypedSelector((state) => state.bundles[id]);
 
   useEffect(() => {
+    if (!bundle) {
+      createBundle(id, content);
+      return;
+    }
     const timer = setTimeout(async () => {
-      const bundledCode = await bundle(content);
-      setCode(bundledCode.code);
-      setError(bundledCode.err);
+      createBundle(id, content);
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [content]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [content, id, createBundle]);
 
   return (
     <Resizable direction="vertical">
@@ -42,7 +43,17 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell: { content, id } }) => {
         <Resizable direction="horizontal">
           <CodeEditor initialValue={content} onChange={(value) => updateCell(id, value)} />
         </Resizable>
-        <Preview code={code} bundleStatus={error} />
+        <div className="progress-wrapper">
+          {!bundle || bundle.loading ? (
+            <div className="progress-cover">
+              <progress className="progress is-small is-primary" max="100">
+                Loading
+              </progress>
+            </div>
+          ) : (
+            <Preview code={bundle.code} bundleStatus={bundle.err} />
+          )}
+        </div>
       </div>
     </Resizable>
   );
