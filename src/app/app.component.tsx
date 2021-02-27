@@ -1,13 +1,12 @@
 /** Dependencies */
 
 /** Components */
-import CodeCell from '../components/code-cell/code-cell.component';
-import TextEditor from '../components/text-editor/text-editor.component';
+import CellList from '../components/cell-list/cell-list.component';
 
 const App: React.FC = () => {
   return (
     <div>
-      <TextEditor />
+      <CellList />
     </div>
   );
 };
