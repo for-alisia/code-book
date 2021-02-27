@@ -12,6 +12,7 @@ import { Cell } from '../../state';
 /** Redux */
 import { useActions } from '../../hooks/use-actions.hook';
 import { useTypedSelector } from '../../hooks/use-typed-selector.hook';
+import { useCumulativeCode } from '../../hooks/use-cumulative-code.hook';
 
 /** Styles */
 import './code-cell.styles.css';
@@ -23,23 +24,31 @@ interface CodeCellProps {
 const CodeCell: React.FC<CodeCellProps> = ({ cell: { content, id } }) => {
   const { updateCell, createBundle } = useActions();
   const bundle = useTypedSelector((state) => state.bundles[id]);
+  const cumulativeCode = useCumulativeCode(id);
 
   useEffect(() => {
     if (!bundle) {
-      createBundle(id, content);
+      createBundle(id, cumulativeCode);
       return;
     }
     const timer = setTimeout(async () => {
-      createBundle(id, content);
+      createBundle(id, cumulativeCode);
     }, 1000);
 
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [content, id, createBundle]);
+  }, [cumulativeCode, id, createBundle]);
 
   return (
     <Resizable direction="vertical">
-      <div style={{ height: 'calc(100% - 10px)', display: 'flex', flexDirection: 'row' }}>
+      <div
+        style={{
+          height: 'calc(100% - 10px)',
+          display: 'flex',
+          flexDirection: 'row',
+          overflow: 'hidden',
+        }}
+      >
         <Resizable direction="horizontal">
           <CodeEditor initialValue={content} onChange={(value) => updateCell(id, value)} />
         </Resizable>
