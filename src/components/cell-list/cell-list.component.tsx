@@ -10,13 +10,13 @@ const CellList: React.FC = () => {
   const cells = useTypedSelector(({ cells: { data, order } }) => order.map((id) => data[id]));
   return (
     <div>
+      <AddCell prevCellId={null} />
       {cells.map((cell) => (
         <Fragment key={cell.id}>
-          <AddCell nextCellId={cell.id} />
           <CellListItem cell={cell} />
+          <AddCell prevCellId={cell.id} />
         </Fragment>
       ))}
-      <AddCell nextCellId={null} />
     </div>
   );
 };
