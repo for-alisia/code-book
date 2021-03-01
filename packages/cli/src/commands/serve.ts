@@ -2,6 +2,8 @@ import path from 'path';
 import { Command } from 'commander';
 import { serve } from 'local-api';
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 export const serveCommand = new Command()
   .command('serve [filename]')
   .description('Open a file for editing')
@@ -10,7 +12,7 @@ export const serveCommand = new Command()
     try {
       const dir = path.join(process.cwd(), path.dirname(filename));
       const file = path.basename(filename);
-      await serve(+options.port, file, dir);
+      await serve(+options.port, file, dir, !isProduction);
       console.log(`Opened ${filename}. Navigate to http://localhost:${options.port} to start edit`);
     } catch (err) {
       if (err.code === 'EADDRINUSE') {

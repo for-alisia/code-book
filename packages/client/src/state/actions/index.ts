@@ -1,6 +1,6 @@
 /** Types */
 import { ActionType } from '../action-types';
-import { CellTypes, Direction } from '../cell';
+import { CellTypes, Direction, Cell } from '../cell';
 
 export interface MoveCellAction {
   type: ActionType.MOVE_CELL;
@@ -22,6 +22,20 @@ export interface UpdateCellAction {
   payload: { id: string; content: string };
 }
 
+export interface FetchCellsAction {
+  type: ActionType.FETCH_CELLS;
+}
+
+export interface FetchCellsComplete {
+  type: ActionType.FETCH_CELLS_COMPLETE;
+  payload: Cell[];
+}
+
+export interface FetchCellsError {
+  type: ActionType.FETCH_CELLS_ERROR;
+  payload: string;
+}
+
 export interface BundleStartAction {
   type: ActionType.BUNDLE_START;
   payload: {
@@ -39,6 +53,7 @@ export interface BundleCompleteAction {
     };
   };
 }
+
 export type Action =
   | MoveCellAction
   | DeleteCellAction
