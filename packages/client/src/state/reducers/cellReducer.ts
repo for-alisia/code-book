@@ -61,6 +61,29 @@ const cellReducer = produce((state: CellState = initialState, action: Action) =>
       idx < 0 ? state.order.unshift(cell.id) : state.order.splice(idx + 1, 0, cell.id);
       return state;
 
+    case ActionType.FETCH_CELLS:
+      state.loading = true;
+      state.error = null;
+      return state;
+
+    case ActionType.FETCH_CELLS_COMPLETE:
+      state.loading = false;
+      state.order = action.payload.map((cell) => cell.id);
+      state.data = action.payload.reduce((acc, cell) => {
+        acc[cell.id] = cell;
+        return acc;
+      }, {} as CellState['data']);
+      return state;
+
+    case ActionType.FETCH_CELLS_ERROR:
+      state.loading = false;
+      state.error = action.payload;
+      return state;
+
+    case ActionType.SAVE_CELLS_ERROR:
+      state.error = action.payload;
+      return state;
+
     default:
       return state;
   }
