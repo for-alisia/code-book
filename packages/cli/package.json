@@ -1,7 +1,7 @@
 {
   "name": "code-book",
   "version": "1.0.0",
-  "description": "JS-In-Browser code editor allows to create documentation and save it locally",
+  "description": "JS-In-Browser code editor allows to create documentation and save it locally.",
   "files": [
     "dist"
   ],
