@@ -1,5 +1,5 @@
 {
-  "name": "code-book",
+  "name": "code-notebook",
   "version": "2.0.0",
   "description": "JS-In-Browser code editor allows to create documentation and save it locally.",
   "files": [
@@ -29,5 +29,6 @@
     "commander": "^7.1.0",
     "esbuild": "0.8.26",
     "typescript": "^4.2.2"
-  }
+  },
+  "gitHead": "2dfb37306280461e57a621eec01b710a6e475ad8"
 }

@@ -1,0 +1,2 @@
+(this["webpackJsonp@for-alisia/code-client"]=this["webpackJsonp@for-alisia/code-client"]||[]).push([[136],{306:function(e,t){Prism.languages.gcode={comment:/;.*|\B\(.*?\)\B/,string:{pattern:/"(?:""|[^"])*"/,greedy:!0},keyword:/\b[GM]\d+(?:\.\d+)?\b/,property:/\b[A-Z]/,checksum:{pattern:/\*\d+/,alias:"punctuation"},punctuation:/:/}}}]);
+//# sourceMappingURL=136.b8ad5415.chunk.js.map

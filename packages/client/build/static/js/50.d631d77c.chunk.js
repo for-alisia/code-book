@@ -1,0 +1,2 @@
+(this["webpackJsonp@for-alisia/code-client"]=this["webpackJsonp@for-alisia/code-client"]||[]).push([[50],{220:function(e,a){Prism.languages.brainfuck={pointer:{pattern:/<|>/,alias:"keyword"},increment:{pattern:/\+/,alias:"inserted"},decrement:{pattern:/-/,alias:"deleted"},branching:{pattern:/\[|\]/,alias:"important"},operator:/[.,]/,comment:/\S+/}}}]);
+//# sourceMappingURL=50.d631d77c.chunk.js.map

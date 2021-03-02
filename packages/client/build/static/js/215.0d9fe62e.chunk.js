@@ -1,0 +1,2 @@
+(this["webpackJsonp@for-alisia/code-client"]=this["webpackJsonp@for-alisia/code-client"]||[]).push([[215],{385:function(n,s){Prism.languages.jsonp=Prism.languages.extend("json",{punctuation:/[{}[\]();,.]/}),Prism.languages.insertBefore("jsonp","punctuation",{function:/[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*\()/})}}]);
+//# sourceMappingURL=215.0d9fe62e.chunk.js.map

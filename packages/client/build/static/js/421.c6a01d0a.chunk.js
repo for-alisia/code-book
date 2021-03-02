@@ -1,0 +1,2 @@
+(this["webpackJsonp@for-alisia/code-client"]=this["webpackJsonp@for-alisia/code-client"]||[]).push([[421],{591:function(s,i){var a=Prism.util.clone(Prism.languages.typescript);Prism.languages.tsx=Prism.languages.extend("jsx",a)}}]);
+//# sourceMappingURL=421.c6a01d0a.chunk.js.map

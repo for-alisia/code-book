@@ -1,2 +1,0 @@
-(this["webpackJsonpcode-book"]=this["webpackJsonpcode-book"]||[]).push([[215],{385:function(n,o){Prism.languages.jsonp=Prism.languages.extend("json",{punctuation:/[{}[\]();,.]/}),Prism.languages.insertBefore("jsonp","punctuation",{function:/[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*\()/})}}]);
-//# sourceMappingURL=215.22e4efb8.chunk.js.map

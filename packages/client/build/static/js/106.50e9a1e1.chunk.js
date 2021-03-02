@@ -1,0 +1,2 @@
+(this["webpackJsonp@for-alisia/code-client"]=this["webpackJsonp@for-alisia/code-client"]||[]).push([[106],{276:function(i,t){Prism.languages.editorconfig={comment:/[;#].*/,section:{pattern:/(^[ \t]*)\[.+]/m,lookbehind:!0,alias:"keyword",inside:{regex:/\\\\[\[\]{},!?.*]/,operator:/[!?]|\.\.|\*{1,2}/,punctuation:/[\[\]{},]/}},property:{pattern:/(^[ \t]*)[^\s=]+(?=[ \t]*=)/m,lookbehind:!0},value:{pattern:/=.*/,alias:"string",inside:{punctuation:/^=/}}}}}]);
+//# sourceMappingURL=106.50e9a1e1.chunk.js.map

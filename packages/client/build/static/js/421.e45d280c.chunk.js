@@ -1,2 +1,0 @@
-(this["webpackJsonpcode-book"]=this["webpackJsonpcode-book"]||[]).push([[421],{591:function(s,e){var o=Prism.util.clone(Prism.languages.typescript);Prism.languages.tsx=Prism.languages.extend("jsx",o)}}]);
-//# sourceMappingURL=421.e45d280c.chunk.js.map
