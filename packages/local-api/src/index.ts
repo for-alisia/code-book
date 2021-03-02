@@ -17,7 +17,7 @@ export const serve = (port: number, filename: string, dir: string, useProxy: boo
       })
     );
   } else {
-    const packagePath = require.resolve('client/build/index.html');
+    const packagePath = require.resolve('@for-alisia/code-client/build/index.html');
     app.use(express.static(path.dirname(packagePath)));
   }
 

@@ -42,7 +42,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.serveCommand = void 0;
 var path_1 = __importDefault(require("path"));
 var commander_1 = require("commander");
-var local_api_1 = require("local-api");
+var code_local_api_1 = require("@for-alisia/code-local-api");
 var isProduction = process.env.NODE_ENV === 'production';
 exports.serveCommand = new commander_1.Command()
     .command('serve [filename]')
@@ -58,7 +58,7 @@ exports.serveCommand = new commander_1.Command()
                     _a.trys.push([0, 2, , 3]);
                     dir = path_1.default.join(process.cwd(), path_1.default.dirname(filename));
                     file = path_1.default.basename(filename);
-                    return [4 /*yield*/, local_api_1.serve(+options.port, file, dir, !isProduction)];
+                    return [4 /*yield*/, code_local_api_1.serve(+options.port, file, dir, !isProduction)];
                 case 1:
                     _a.sent();
                     console.log("Opened " + filename + ". Navigate to http://localhost:" + options.port + " to start edit");
