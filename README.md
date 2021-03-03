@@ -40,3 +40,4 @@ npx install code-notebook serve --port 3300
 - [Markdown Editor](https://www.npmjs.com/package/@uiw/react-md-editor) to handle text snippets
 - [bulmaswatch/superhero theme](https://jenil.github.io/bulmaswatch/superhero/) for styling
 - State Managament: Redux, Immer, Thunk
+- [Lerna](https://github.com/lerna/lerna) to handle all packages

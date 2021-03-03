@@ -43,6 +43,12 @@ exports.createCellsRouter = void 0;
 var express_1 = __importDefault(require("express"));
 var promises_1 = __importDefault(require("fs/promises"));
 var path_1 = __importDefault(require("path"));
+var defaultText = "\n  # Code-Book: JS Code Snippets Editor\n  ### Create documentation for your projects\n  ---\n  - Import NPM packages for JS and CSS\n  - All cells have the common namespace (no need to import packages twice)\n  - Bundle and transpile code inside browser\n  - Save snippets in a file\n  - Format code with Prettier (Format button in Code Cell)\n  ---\n  \n  1. Choose +Code to create Code Cell (Code Editor) or +Text to create Text Cell (MD Editor)\n  2. Use show() function to display variable in a preview area (see an example below)\n  3. Saving and compiling are happenning on document's changes. Your file will always up to date.\n  4. React and ReactDOM are already imported into the whole project. No need to import them.\n  5. Preview area has a div#root element you can target.\n\n  ---\n\n  [Visit GitHub Repo](https://github.com/for-alisia/code-book)\n";
+var defaultCode = "\n  // Code Cell Example\n  const App = () => (\n    <div>\n      <h1>React Component</h1>\n      <p>Use show() function to display the component</p>\n    </div>\n  );\n  show(<App />)\n";
+var defaultCells = [
+    { id: '1df', content: defaultText, type: 'text' },
+    { id: '2dfc', content: defaultCode, type: 'code' },
+];
 var createCellsRouter = function (filename, dir) {
     var router = express_1.default.Router();
     router.use(express_1.default.json());
@@ -56,15 +62,16 @@ var createCellsRouter = function (filename, dir) {
                     return [4 /*yield*/, promises_1.default.readFile(fullPath, { encoding: 'utf-8' })];
                 case 1:
                     result = _a.sent();
+                    console.log(fullPath);
                     res.send(JSON.parse(result));
                     return [3 /*break*/, 6];
                 case 2:
                     err_1 = _a.sent();
                     if (!(err_1.code === 'ENOENT')) return [3 /*break*/, 4];
-                    return [4 /*yield*/, promises_1.default.writeFile(fullPath, '[]', 'utf-8')];
+                    return [4 /*yield*/, promises_1.default.writeFile(fullPath, JSON.stringify(defaultCells), 'utf-8')];
                 case 3:
                     _a.sent();
-                    res.send([]);
+                    res.send(defaultCells);
                     return [3 /*break*/, 5];
                 case 4: throw err_1;
                 case 5: return [3 /*break*/, 6];
